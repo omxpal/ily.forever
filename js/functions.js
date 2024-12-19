@@ -92,42 +92,34 @@ function startHeartAnimation() {
 	};
 })(jQuery);
 
-// Function to calculate and display the time elapsed
-function timeElapse(startDate) {
-    var current = new Date(); // Current date and time
-    var seconds = Math.floor((current - startDate) / 1000); // Time difference in seconds, rounded to nearest second
-
-    var days = Math.floor(seconds / (3600 * 24)); // Calculate days
-    seconds = seconds % (3600 * 24); // Remaining seconds after extracting days
-
-    var hours = Math.floor(seconds / 3600); // Calculate hours
-    if (hours < 10) {
-        hours = "0" + hours;
-    }
-
-    seconds = seconds % 3600; // Remaining seconds after extracting hours
-    var minutes = Math.floor(seconds / 60); // Calculate minutes
-    if (minutes < 10) {
-        minutes = "0" + minutes;
-    }
-
-    seconds = seconds % 60; // Remaining seconds after extracting minutes
-    if (seconds < 10) {
-        seconds = "0" + seconds;
-    }
-
-    // Display the result with formatted values
-    var result = "<span class=\"digit\">" + days + "</span> days <span class=\"digit\">" + hours + "</span> hours <span class=\"digit\">" + minutes + "</span> minutes <span class=\"digit\">" + seconds + "</span> seconds"; 
-    $("#elapseClock").html(result);
+function timeElapse(date){
+	var current = Date();
+	var seconds = (Date.parse(current) - Date.parse(date)) / 1000;
+	var days = Math.floor(seconds / (3600 * 24));
+	seconds = seconds % (3600 * 24);
+	var hours = Math.floor(seconds / 3600);
+	if (hours < 10) {
+		hours = "0" + hours;
+	}
+	seconds = seconds % 3600;
+	var minutes = Math.floor(seconds / 60);
+	if (minutes < 10) {
+		minutes = "0" + minutes;
+	}
+	seconds = seconds % 60;
+	if (seconds < 10) {
+		seconds = "0" + seconds;
+	}
+	var result = "<span class=\"digit\">" + days + "</span> days <span class=\"digit\">" + hours + "</span> hours <span class=\"digit\">" + minutes + "</span> minutes <span class=\"digit\">" + seconds + "</span> seconds"; 
+	$("#elapseClock").html(result);
 }
 
-// Call the function with the start date
-var startDate = new Date("2023-02-21T12:00:00"); // February 21, 2023, 12:00 PM
-
-// Update the elapsed time every second
-setInterval(function () {
-    timeElapse(startDate);
-}, 1000);
+function showMessages() {
+	adjustWordsPosition();
+	$('#messages').fadeIn(5000, function() {
+		showLoveU();
+	});
+}
 
 
 
