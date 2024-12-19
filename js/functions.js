@@ -114,6 +114,12 @@ function timeElapse(date){
 	$("#elapseClock").html(result);
 }
 
+// Call the function with the start date
+var startDate = new Date("2023-02-21T12:05:00"); // February 21, 2023, 12:05 PM
+setInterval(function () {
+    timeElapse(startDate);
+}, 1000); // Update every second
+
 function showMessages() {
 	adjustWordsPosition();
 	$('#messages').fadeIn(5000, function() {
