@@ -93,9 +93,9 @@ function startHeartAnimation() {
 })(jQuery);
 
 // Function to calculate and display the time elapsed
-function timeElapse(date) {
+function timeElapse(startDate) {
     var current = new Date(); // Current date and time
-    var seconds = (current - date) / 1000; // Time difference in seconds
+    var seconds = (current - startDate) / 1000; // Time difference in seconds
 
     var days = Math.floor(seconds / (3600 * 24));
     seconds = seconds % (3600 * 24);
@@ -127,6 +127,7 @@ var startDate = new Date("2023-02-21T12:00:00"); // February 21, 2023, 12:00 PM
 setInterval(function () {
     timeElapse(startDate);
 }, 1000);
+
 
 function showMessages() {
 	adjustWordsPosition();
